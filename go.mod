@@ -1,4 +1,4 @@
-module github.com/BrobridgeOrg/gravity-api
+module github.com/rHuei/gravity-api
 
 go 1.13
 
