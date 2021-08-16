@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package gravity.api.data_handler;
+
+service DataHandler {
+  rpc Push(PushRequest) returns (PushReply) {}
+  rpc PushStream(stream PushRequest) returns (PushReply) {}
+}
+
+message PushRequest {
+  string eventName = 1;
+  bytes payload = 2;
+  map<string, bytes> meta = 3;
+}
+
+message PushReply {
+  bool success = 1;
+  string reason = 2;
+}

@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package gravity.api.controller;
+
+service Controller {
+  rpc GetClientCount(GetClientCountRequest) returns (GetClientCountReply) {}
+  rpc GetPipelineCount(GetPipelineCountRequest) returns (GetPipelineCountReply) {}
+  rpc Register(RegisterRequest) returns (RegisterReply) {}
+  rpc Unregister(UnregisterRequest) returns (UnregisterReply) {}
+  rpc ReleasePipelines(ReleasePipelinesRequest) returns (ReleasePipelinesReply) {}
+  rpc GetPipelines(GetPipelinesRequest) returns (GetPipelinesReply) {}
+  rpc RegisterAdapter(RegisterAdapterRequest) returns (RegisterAdapterReply) {}
+  rpc UnregisterAdapter(UnregisterAdapterRequest) returns (UnregisterAdapterReply) {}
+}
+
+message GetClientCountRequest {
+}
+
+message GetClientCountReply {
+  uint64 count = 1;
+}
+
+message GetPipelineCountRequest {
+}
+
+message GetPipelineCountReply {
+  uint64 count = 1;
+}
+
+message RegisterRequest {
+  string clientID = 1;
+}
+
+message RegisterReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UnregisterRequest {
+  string clientID = 1;
+}
+
+message UnregisterReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message ReleasePipelinesRequest {
+  string clientID = 1;
+  repeated uint64 pipelines = 2;
+}
+
+message ReleasePipelinesReply {
+  bool success = 1;
+  string reason = 2;
+  repeated uint64 failures = 3;
+}
+
+message GetPipelinesRequest {
+  string clientID = 1;
+}
+
+message GetPipelinesReply {
+  repeated uint64 pipelines = 1;
+}
+
+message RegisterAdapterRequest {
+  string clientID = 1;
+  string url = 2;
+  int64 offset = 3;
+}
+
+message RegisterAdapterReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UnregisterAdapterRequest {
+  string clientID = 1;
+}
+
+message UnregisterAdapterReply {
+  bool success = 1;
+  string reason = 2;
+}
+
